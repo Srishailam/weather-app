@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Weather from "./Weather";
-import API from "./API";
+import useFetch from "./useFetch";
 
 interface Day {
   low: number;
@@ -21,9 +21,10 @@ export default ({degreeType, handleDegreeClick}: Props) => {
     days: [],
   });
 
-  useEffect(() => {
-    API("forecast", setWeather);
-  }, []);
+  const {response, error} = useFetch('forecast', setWeather, {});
+  if (!response){
+    return <div>Loading...</div>
+  }
 
   let weathers: JSX.Element[] = [];
   if (days) {

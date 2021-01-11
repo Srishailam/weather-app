@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Weather from "./Weather";
-import API from "./API";
+import useFetch from "./useFetch";
 type Props = {
   degreeType: string,
   handleDegreeClick: Function
@@ -13,9 +13,11 @@ export default ({degreeType, handleDegreeClick}: Props) => {
     icon: "01d",
   });
 
-  useEffect(() => {
-    API("current", setWeather);
-  }, []);
+  const {response, error} = useFetch('current', setWeather, {});
+
+  if (!response){
+    return <div>Loading...</div>
+  }
 
   return (
     <div className="Home">
