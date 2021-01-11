@@ -5,7 +5,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, "build")));
 
 require("dotenv").config({ path: __dirname + "/.env" });
-const API_KEY = process.env["API_KEY"];
+const API_KEY = process.env["REACT_APP_OPENWEATHERMAP_API_KEY"];
 const API_URL = "https://api.openweathermap.org/data/2.5/";
 
 app.get("/api/current/:lat/:lon", async ({ params: { lat, lon } }, res) => {

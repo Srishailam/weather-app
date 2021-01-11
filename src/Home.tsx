@@ -16,7 +16,7 @@ export default () => {
 
   return (
     <div className="Home">
-      <div className="title">weahter</div>
+      <div className="title">Weather</div>
       <div>Unit: K</div>
       <Weather temp={temp} low={low} high={high} icon={icon} />
     </div>
