@@ -66,7 +66,7 @@ body {
     .Weather {
       display: flex;
       justify-content: space-between;
-      width: 200px;
+      width: 400px;
       flex-direction: row;
       color: $color-vroom-black;
       background-color: $color-vroom-white;
@@ -95,6 +95,15 @@ body {
           margin-top: -16px;
           border-bottom: 10px solid #18af18;
         }
+      }
+      .degree {
+        color: #a9b2d27d;
+        cursor: pointer;
+      }
+      .degree.active{
+        color: cornflowerblue;
+        pointer-events: none;
+        cursor: none;
       }
     }
   }

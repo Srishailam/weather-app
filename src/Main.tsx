@@ -1,13 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import Forecast from "./Forecast";
 import Home from "./Home";
+export default () => {
+  const [degreeType, setDegreeType] = useState('F');
 
-export default () => (
-  <main>
-    <Switch>
-      <Route path="/" component={Home} exact />
-      <Route path="/forecast" component={Forecast} />
-    </Switch>
-  </main>
-);
+  const onDegreeTypeClick = () => {
+    if (degreeType === "F") {
+      setDegreeType("C");
+    } else {
+      setDegreeType("F");
+    }
+  }
+  return (
+    <main>
+      <Switch>
+        <Route 
+          path="/" 
+          exact
+          render={  (props) => ( 
+            <Home {...props} degreeType={degreeType} handleDegreeClick={onDegreeTypeClick}/>
+          )}
+          />
+        <Route 
+          path="/forecast"
+          render={  (props) => ( 
+            <Forecast {...props} degreeType={degreeType} handleDegreeClick={onDegreeTypeClick}/>
+          )}
+          />
+      </Switch>
+    </main>
+  )
+}

@@ -11,7 +11,12 @@ interface State {
   days: Day[];
 }
 
-export default () => {
+type Props = {
+  degreeType: string,
+  handleDegreeClick: Function
+}
+
+export default ({degreeType, handleDegreeClick}: Props) => {
   const [{ days }, setWeather] = useState<State>({
     days: [],
   });
@@ -23,13 +28,13 @@ export default () => {
   let weathers: JSX.Element[] = [];
   if (days) {
     weathers = days.map(({ low, high, icon }, i) => (
-      <Weather key={i} temp={null} low={low} high={high} icon={icon} />
+      <Weather key={i} temp={null} low={low} high={high} icon={icon} degreeType={degreeType} handleDegreeClick={handleDegreeClick}/>
     ));
   }
   return (
     <div className="Forecast">
       <div className="title">next 5 days</div>
-      <div>Unit: K</div>
+      <div>Unit: {degreeType}</div>
       {weathers}
     </div>
   );
