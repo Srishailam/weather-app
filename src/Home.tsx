@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Weather from "./Weather";
 import useFetch from "./useFetch";
+import { Title } from "./Styled/SharedStyles";
 type Props = {
   degreeType: string,
   handleDegreeClick: Function
@@ -21,9 +22,9 @@ export default ({degreeType, handleDegreeClick}: Props) => {
 
   return (
     <div className="Home">
-      <div className="title">Weather</div>
+      <Title>Weather</Title>
       <div>Unit: {degreeType}</div>
-      <Weather temp={temp} low={low} high={high} icon={icon} degreeType={degreeType} handleDegreeClick={handleDegreeClick}/>
+      <Weather marginTop={true} temp={temp} low={low} high={high} icon={icon} degreeType={degreeType} handleDegreeClick={handleDegreeClick}/>
     </div>
   );
 };

@@ -1,7 +1,18 @@
 import React, { useState } from "react";
 import { Switch, Route } from "react-router-dom";
+import styled from "styled-components";
 import Forecast from "./Forecast";
 import Home from "./Home";
+
+const MainContainer = styled.main`
+  flex: 1;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.25px;
+  margin: 40px;
+  padding: 80px 0;
+`;
 export default () => {
   const [degreeType, setDegreeType] = useState('F');
 
@@ -13,7 +24,7 @@ export default () => {
     }
   }
   return (
-    <main>
+    <MainContainer>
       <Switch>
         <Route 
           path="/" 
@@ -29,6 +40,6 @@ export default () => {
           )}
           />
       </Switch>
-    </main>
+    </MainContainer>
   )
 }

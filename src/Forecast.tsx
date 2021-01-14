@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Weather from "./Weather";
 import useFetch from "./useFetch";
+import { Title } from "./Styled/SharedStyles";
 
 interface Day {
   low: number;
@@ -29,12 +30,12 @@ export default ({degreeType, handleDegreeClick}: Props) => {
   let weathers: JSX.Element[] = [];
   if (days) {
     weathers = days.map(({ low, high, icon }, i) => (
-      <Weather key={i} temp={null} low={low} high={high} icon={icon} degreeType={degreeType} handleDegreeClick={handleDegreeClick}/>
+      <Weather marginTop={false} key={i} temp={null} low={low} high={high} icon={icon} degreeType={degreeType} handleDegreeClick={handleDegreeClick}/>
     ));
   }
   return (
     <div className="Forecast">
-      <div className="title">next 5 days</div>
+      <Title>next 5 days</Title>
       <div>Unit: {degreeType}</div>
       {weathers}
     </div>
